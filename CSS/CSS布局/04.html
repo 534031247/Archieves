@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 50px 350px 50px;
+      grid-gap: 5px;
+      grid-template-areas:
+          ". h h h h h h h h h h ."
+          "c c c c c c c c c c m m"
+          ". f f f f f f f f f f .";
+    }
+
+    .container div {
+      text-align: center;
+      border-radius: .5rem;
+    }
+
+    .header {
+      grid-area: h;
+      line-height: 50px;
+      background: #AAFCB9;
+    }
+    
+    .menu {
+      grid-area: m;
+      line-height: 350px;
+      background: #FAF17C;
+    }
+
+    .content {
+      grid-area: c;
+      line-height: 350px;
+      background: #6DFFFC;
+    }
+
+    .footer {
+      grid-area: f;
+      line-height: 50px;
+      background: #E8A5F9;
+    }
+
+    @media screen and (max-width: 640px) {
+      .container {
+        grid-template-areas:
+          "m m m m m m h h h h h h"
+          "c c c c c c c c c c c c"
+          ". f f f f f f f f f f .";
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">HEADER</div>
+    <div class="menu">MENU</div>
+    <div class="content">CONTENT</div>
+    <div class="footer">FOOTER</div>
+  </div>  
+</body>
+</html>
