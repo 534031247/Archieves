@@ -1,0 +1,15 @@
+QT cannot find -lGL:
+1. First locate the GL library 定位libGL: locate libGL.so.
+2. Then link it under /usr/lib：sudo ln -s /usr/lib/x86_64-linux-gnu/libGL.so.1 /usr/lib/libGL.so
+3. If the library is missing, it can be installed via libgl1-mesa-dev package
+
+QT can't make:
+sudo apt-get install build essential
+
+sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev
+
+运行报错：
+
+Warning: "No decoder available for type 'video/x-h264, stream-format=(string)avc, alignment=(string)au, codec_data=(buffer)0164002affe1001a6764002aac2c6a81e0089f966e0202028000000300800000194201000468ee3cb0, level=(string)4.2, profile=(string)high'."
+
+安装：sudo apt-get install gstreamer1.0-libav 即可解决

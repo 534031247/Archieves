@@ -1,0 +1,7 @@
+
+In all supported versions of Ubuntu vlc.h is provided by libvlc-dev. This package contains headers and a static library required to build standalone applications that use VLC features. To install libvlc-dev open the terminal and type:
+
+sudo apt-get install libvlc-dev  
+When libvlc-dev is installed, the path to vlc/vlc.h is /usr/include/vlc/vlc.h
+
+sudo apt-get install qtdeclarative5-dev libvlccore-dev libvlc-dev
