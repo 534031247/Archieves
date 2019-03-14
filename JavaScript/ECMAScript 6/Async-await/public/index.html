@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Async-await</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <section id="app">
+    <input type="text" placeholder="手机号码" v-model="phoneNumber">
+    <button @click="handleTopUp">充值</button>
+    <br>
+    <span v-for="item in faceList">{{ item }}</span>
+  </section>
+  <script>
+    const API_BASE = 'http://localhost:5000'
+    var app = new Vue({
+      el: '#app',
+      data: {
+        faceList: ['test', 'test', 'test'],
+        phoneNumber: ''
+      },
+      methods: {
+        getLocation (phoneNumber) {
+          return axios.post(`${ API_BASE }/phonelocation`, {
+            phoneNumber
+          })
+        },
+
+        topup (province, city) {
+          return axios.post(`${ API_BASE }/topup`, {
+            province,
+            city
+          })
+        },
+
+        async handleTopUp () {
+          try {
+            const location = await this.getLocation(this.phoneNumber)
+            console.log('outside1')
+            if (200 == location.status && location.data.success) {
+              const { province } = location.data
+              const { city } = location.data
+              const costRes = await this.topup(province, city)
+              console.log('outside2')
+              if (200 == costRes.status && costRes.data.success) {
+                this.faceList = costRes.data.obj
+              }
+            }
+          }
+          catch (error) {
+            console.log(error)
+          }
+        }
+        
+        // handleTopUp () {
+        //   // alert(this.phoneNumber)
+        //   this.getLocation(this.phoneNumber)
+        //       .then(res => {
+        //         if (200 == res.status && res.data.success) {
+        //           const { province } = res.data.obj
+        //           const { city } = res.data.obj
+        //           this.topup(province, city)
+        //               .then(res => {
+        //                 if (200 == res.status && res.data.success) {
+        //                   this.faceList = res.data.obj
+        //                 }
+        //               })
+        //         }
+        //       })
+        //       .catch(err => console.log(err))
+        // }
+      }
+    })
+  </script>
+</body>
+</html>

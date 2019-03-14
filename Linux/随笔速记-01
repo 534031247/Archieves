@@ -1,0 +1,3 @@
+递归删除当前目录下特定的所有文件，比如我要删除当前目录下所有_vnote.json文件，那么：
+find . -name '_vnote.json' -type f -print -exec rm -rf {} \;
+注意不要忘了末尾的分号

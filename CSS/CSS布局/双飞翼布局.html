@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>双飞翼布局</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="container">
+    <div class="center">
+      <div class="inner">双飞翼布局</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+</body>
+  <style>
+    .container {
+      /* 两倍的left值 + right值 */
+      min-width: 600px;
+    }
+
+    .center {
+      float: left;
+      width: 100%;
+      height: 500px;
+      background-color: aqua;
+    }
+
+    .center .inner {
+      margin: 0 200px;
+    }
+
+    .left {
+      float: left;
+      width: 200px;
+      height: 400px;
+      margin-left: -100%;
+      background-color: beige;
+    }
+
+    .right {
+      float: left;
+      width: 200px;
+      height: 400px;
+      margin-left: -200px;
+      background-color: blueviolet;
+    }
+  </style>
+</html>
