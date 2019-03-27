@@ -1,6 +1,8 @@
 # Vue按需引入element-UI
 
 > 官网虽然给出了按需引入的例子，但是那是version6的Babel了，我们至今最新的vue-cli已经不用这个了
+>
+> 
 
 ## 安装preset
 
@@ -31,8 +33,6 @@ module.exports = {
   ]
 }
 ```
-
-
 
 ## 在`main.js`中按需引入
 
